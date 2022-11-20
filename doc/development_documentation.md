@@ -10,7 +10,7 @@ I also want to try to learn a new programming language, I have chosen ~~Rust~~ P
 
 I would also like it to be able to download it as a "zsh_package"? Not sure if that is a thing, but we will see
 
-## Logs
+## Development Logs
 
 ### 18/11/22
 
@@ -21,3 +21,20 @@ I would also like it to be able to download it as a "zsh_package"? Not sure if t
 
 - Switch from Rust to Python
 - Setup Python
+- [Project Structure](https://docs.python-guide.org/writing/structure/)
+
+#### Immediate Goals
+
+- Create a argument parser (Console Arguments)
+- Create a test for this
+- Use and read about Logging
+- Make a scrpit to create this dev logs
+
+#### Questions
+
+- **Should I create a virtual env?**
+  - *Insert Answer here*
+
+#### Useful info
+
+- [Testing](https://docs.python-guide.org/writing/tests/)
