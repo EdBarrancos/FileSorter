@@ -25,10 +25,10 @@ I would also like it to be able to download it as a "zsh_package"? Not sure if t
 
 #### Immediate Goals
 
-- Create a argument parser (Console Arguments)
-- Create a test for this
-- Use and read about Logging
-- Make a scrpit to create this dev logs
+- [ ] Create a argument parser (Console Arguments)
+- [ ] Create a test for this
+- [ ] Use and read about Logging
+- [x] Make a scrpit to create this dev logs
 
 #### Questions
 
@@ -38,3 +38,21 @@ I would also like it to be able to download it as a "zsh_package"? Not sure if t
 #### Useful info
 
 - [Testing](https://docs.python-guide.org/writing/tests/)
+
+### 21/11/22
+
+- New Dev Log entry script
+- Created a make file and rule for entrying a new dev log
+
+#### Immediate Goals - 21/11/22
+
+- [ ] *Insert future goals/problems to solve here*
+
+#### Questions - 21/11/22
+
+- **Insert your questions here**
+  - *Insert Answer here or leave it like this :p*
+
+#### Useful info - 21/11/22
+
+- [*What is the info about*](*https://...)
