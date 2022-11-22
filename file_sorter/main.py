@@ -3,7 +3,7 @@ from configs import create_configuration
 
 CONFIG_FILE = "settings/file_sorter_properties.json"
 
-configuration = create_configuration()
-logger = get_logger(__name__)
+configuration = create_configuration(CONFIG_FILE)
+logger = get_logger(__name__, configuration)
 
-logger.INFO("File Sorter Initiated")
+logger.info("File Sorter Initiated")

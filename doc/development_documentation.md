@@ -64,7 +64,8 @@ I would also like it to be able to download it as a "zsh_package"? Not sure if t
 
 ### 22/11/22
 
-- 
+- Remove configs from repo and made sure gitignore was working
+- Fix logging
 
 #### Immediate Goals - 22/11/22
 
