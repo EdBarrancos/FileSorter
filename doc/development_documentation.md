@@ -46,10 +46,6 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 - Create configs
 - Created a log creation file
 
-#### Immediate Goals - 21/11/22
-
-- [ ] *Insert future goals/problems to solve here*
-
 #### Questions - 21/11/22
 
 - **Is this the correct way of implementing functional programming and using configurations?**
@@ -67,6 +63,8 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 - Remove configs from repo and made sure gitignore was working
 - Fix logging
 - Starting to organize my project with testing in mind
+- Update Configs so that we store it statically
+- Refactor Logging so that we create the loggers when logging for the first time
 
 #### Immediate Goals - 22/11/22
 
