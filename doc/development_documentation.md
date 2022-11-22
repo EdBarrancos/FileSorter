@@ -43,6 +43,8 @@ I would also like it to be able to download it as a "zsh_package"? Not sure if t
 
 - New Dev Log entry script
 - Created a make file and rule for entrying a new dev log
+- Create configs
+- Created a log creation file
 
 #### Immediate Goals - 21/11/22
 
@@ -50,7 +52,9 @@ I would also like it to be able to download it as a "zsh_package"? Not sure if t
 
 #### Questions - 21/11/22
 
-- **Insert your questions here**
+- **Is this the correct way of implementing functional programming and using configurations?**
+  - If I end up having modules inside modules inside modules, all of them need to keep accessing the configs so they can create a logger. Which means the configuration object will have to go DEEP. Maybe that isnt so bad. We will see...
+  - I can also try to create the get_logger as a decorator? not sure if that would work, have to read up on decorators a bit more
   - *Insert Answer here or leave it like this :p*
 
 #### Useful info - 21/11/22
