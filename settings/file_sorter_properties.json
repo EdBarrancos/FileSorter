@@ -1,6 +1,0 @@
-{
-    "logging": {
-        "level": "INFO",
-        "file": "logs/development.logs"
-    }
-}

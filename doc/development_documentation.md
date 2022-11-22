@@ -61,3 +61,20 @@ I would also like it to be able to download it as a "zsh_package"? Not sure if t
 
 - [Logging](https://www.toptal.com/python/in-depth-python-logging)
 - [Good Practices](https://www.toptal.com/python/top-10-mistakes-that-python-programmers-make)
+
+### 22/11/22
+
+- 
+
+#### Immediate Goals - 22/11/22
+
+- [ ] *Insert future goals/problems to solve here*
+
+#### Questions - 22/11/22
+
+- **Insert your questions here**
+  - *Insert Answer here or leave it like this :p*
+
+#### Useful info - 22/11/22
+
+- [*What is the info about*](*https://...)
