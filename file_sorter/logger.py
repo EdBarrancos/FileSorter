@@ -1,7 +1,7 @@
 import logging
 import sys
 
-from configs import Configutations
+from file_sorter.configs import Configutations
 
 FORMATTER = logging.Formatter(
     "%(asctime)s — %(name)s — %(levelname)s — %(message)s")

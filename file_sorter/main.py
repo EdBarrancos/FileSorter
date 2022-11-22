@@ -1,5 +1,5 @@
-from logger import get_logger
-from configs import create_configuration
+from file_sorter.logger import get_logger
+from file_sorter.configs import create_configuration
 
 CONFIG_FILE = "settings/file_sorter_properties.json"
 
