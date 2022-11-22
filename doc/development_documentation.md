@@ -55,4 +55,5 @@ I would also like it to be able to download it as a "zsh_package"? Not sure if t
 
 #### Useful info - 21/11/22
 
-- [*What is the info about*](*https://...)
+- [Logging](https://www.toptal.com/python/in-depth-python-logging)
+- [Good Practices](https://www.toptal.com/python/top-10-mistakes-that-python-programmers-make)
