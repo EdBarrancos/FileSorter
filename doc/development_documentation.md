@@ -8,7 +8,7 @@ I want the rules to have some sort of syntax
 
 I also want to try to learn a new programming language, I have chosen ~~Rust~~ Python. I'm not actually new to Python, but I wanted to try out functional prgramming and doing that whilst learning a new language seemed a little bit overwhelming
 
-I would also like it to be able to download it as a "zsh_package"? Not sure if that is a thing, but we will see
+I would also like it to be downloadable as a "zsh_package"? Not sure if that is a thing, but we will see
 
 ## Development Logs
 
@@ -27,7 +27,7 @@ I would also like it to be able to download it as a "zsh_package"? Not sure if t
 
 - [ ] Create a argument parser (Console Arguments)
 - [ ] Create a test for this
-- [ ] Use and read about Logging
+- [x] Use and read about Logging
 - [x] Make a scrpit to create this dev logs
 
 #### Questions
@@ -66,6 +66,7 @@ I would also like it to be able to download it as a "zsh_package"? Not sure if t
 
 - Remove configs from repo and made sure gitignore was working
 - Fix logging
+- Starting to organize my project with testing in mind
 
 #### Immediate Goals - 22/11/22
 
@@ -78,4 +79,4 @@ I would also like it to be able to download it as a "zsh_package"? Not sure if t
 
 #### Useful info - 22/11/22
 
-- [*What is the info about*](*https://...)
+- [More testing](https://realpython.com/python-testing/#executing-your-first-test)

@@ -3,3 +3,6 @@ new_devlog_entry:
 
 run:
 	python3 src/main.py
+
+test:
+	python3 -m unittest discover -v -s file_sorter/ -t .
