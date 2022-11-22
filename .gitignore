@@ -53,3 +53,4 @@ cover/
 
 # Project specific
 *_properties.json
+logs/*
