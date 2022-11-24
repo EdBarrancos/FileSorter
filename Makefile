@@ -6,3 +6,6 @@ run:
 
 test:
 	python3 -m unittest discover -v -s file_sorter/ -t ./file_sorter/
+
+clean:
+	find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf

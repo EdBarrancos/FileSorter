@@ -66,15 +66,6 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 - Update Configs so that we store it statically
 - Refactor Logging so that we create the loggers when logging for the first time
 
-#### Immediate Goals - 22/11/22
-
-- [ ] *Insert future goals/problems to solve here*
-
-#### Questions - 22/11/22
-
-- **Insert your questions here**
-  - *Insert Answer here or leave it like this :p*
-
 #### Useful info - 22/11/22
 
 - [More testing](https://realpython.com/python-testing/#executing-your-first-test)
@@ -84,10 +75,14 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 - Created Automated testing on github using actions
 - Expand logging tests
 - Rename main
+- Decorators
+- Start Command line argument parsing
+- New Makefile rule to clean pychache related stuff
 
 #### Immediate Goals - 24/11/22
 
 - [ ] Checkout what else can I do with github actions
+- [ ] New entry script scan for non filled sections from the last log and delete them
 
 #### Questions - 24/11/22
 
