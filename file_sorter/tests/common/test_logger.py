@@ -1,8 +1,8 @@
-from parameterized import parameterized, parameterized_class
+from parameterized import parameterized
 import unittest
 
 import logging
-from logger import Logger
+from common.logger import Logger
 
 
 class TestLogger(unittest.TestCase):

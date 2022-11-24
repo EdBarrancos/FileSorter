@@ -1,7 +1,7 @@
 import sys
 
-from logger import Logger
-from configs import load_configuration
+from common.logger import Logger
+from common.configs import load_configuration
 
 if __name__ == "__main__":
     CONFIG_FILE = "settings/settings.json"
