@@ -81,11 +81,11 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 
 ### 24/11/22
 
-- *Insert what you did today here*
+- Created Automated testing on github using actions
 
 #### Immediate Goals - 24/11/22
 
-- [ ] *Insert future goals/problems to solve here*
+- [ ] Checkout what else can I do with github actions
 
 #### Questions - 24/11/22
 
