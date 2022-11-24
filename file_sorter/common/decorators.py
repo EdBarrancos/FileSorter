@@ -14,6 +14,6 @@ def positional_arguments_validation(error_handler):
             if len(failed) != 0:
                 return error_handler(failed)
 
-            return func_to_validate(args, kwargs)
+            return func_to_validate(*args, **kwargs)
         return wrapper
     return decorator

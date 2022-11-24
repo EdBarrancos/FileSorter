@@ -78,6 +78,7 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 - Decorators
 - Start Command line argument parsing
 - New Makefile rule to clean pychache related stuff
+- Decorator tests
 
 #### Immediate Goals - 24/11/22
 

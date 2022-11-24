@@ -46,13 +46,20 @@ class Logger:
     def create_logger(
             logger_name: str) -> logging.Logger:
         logger = logging.getLogger(logger_name)
-        logger.setLevel(
-            Logger.string_to_logging_level(
-                Configutations.get_logging_level()))
+
+        if Configutations.configuration is not None:
+            logger.setLevel(
+                Logger.string_to_logging_level(
+                    Configutations.get_logging_level()))
+        else:
+            logger.setLevel(logging.DEBUG)
+
         logger.addHandler(Logger.get_console_handler())
-        logger.addHandler(
-            Logger.get_file_handler(
-                Configutations.get_logging_file()))
+
+        if Configutations.configuration is not None:
+            logger.addHandler(
+                Logger.get_file_handler(
+                    Configutations.get_logging_file()))
         logger.propagate = False
         Logger.logger_modules.append(logger_name)
         return logger
