@@ -25,7 +25,7 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 
 #### Immediate Goals
 
-- [ ] Create a argument parser (Console Arguments)
+- [x] Create a argument parser (Console Arguments)
 - [ ] Create a test for this
 - [x] Use and read about Logging
 - [x] Make a scrpit to create this dev logs
@@ -76,7 +76,7 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 - Expand logging tests
 - Rename main
 - Decorators
-- Start Command line argument parsing
+- Command line argument parsing
 - New Makefile rule to clean pychache related stuff
 - Decorator tests
 
@@ -84,6 +84,8 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 
 - [ ] Checkout what else can I do with github actions
 - [ ] New entry script scan for non filled sections from the last log and delete them
+- [ ] From time to time review the code and if im abidying by the functional programming paradigm
+- [ ] Command line parsing tests
 
 #### Questions - 24/11/22
 
