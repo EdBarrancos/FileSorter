@@ -78,3 +78,25 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 #### Useful info - 22/11/22
 
 - [More testing](https://realpython.com/python-testing/#executing-your-first-test)
+
+### 24/11/22
+
+- *Insert what you did today here*
+
+#### Immediate Goals - 24/11/22
+
+- [ ] *Insert future goals/problems to solve here*
+
+#### Questions - 24/11/22
+
+- **Should I still create branches and pull requests even while working alone?**
+  - Arguments for no:
+    - Too much work
+  - Arguments for yes:
+    - Provides Isolation
+    - Can run automatic tests
+    - More easily reversible
+
+#### Useful info - 24/11/22
+
+- [*What is the info about*](*https://...)

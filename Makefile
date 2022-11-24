@@ -5,4 +5,4 @@ run:
 	python3 file_sorter/main.py
 
 test:
-	python3 -m unittest discover -v -s file_sorter/ -t .
+	python3 -m unittest discover -v -s file_sorter/ -t ./file_sorter/
