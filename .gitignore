@@ -52,5 +52,5 @@ coverage.xml
 cover/
 
 # Project specific
-*_properties.json
+settings.json
 logs/*

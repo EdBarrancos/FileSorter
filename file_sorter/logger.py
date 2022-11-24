@@ -24,17 +24,17 @@ class Logger:
     def warn(message):
         frm = inspect.stack()[1]
         mod = inspect.getmodule(frm[0])
-        Logger.get_or_create_logger(mod.__name__).error(message)
+        Logger.get_or_create_logger(mod.__name__).warn(message)
 
     def info(message):
         frm = inspect.stack()[1]
         mod = inspect.getmodule(frm[0])
-        Logger.get_or_create_logger(mod.__name__).error(message)
+        Logger.get_or_create_logger(mod.__name__).info(message)
 
     def debug(message):
         frm = inspect.stack()[1]
         mod = inspect.getmodule(frm[0])
-        Logger.get_or_create_logger(mod.__name__).error(message)
+        Logger.get_or_create_logger(mod.__name__).debug(message)
 
     def get_or_create_logger(module_name: str):
         if len(tuple(filter(

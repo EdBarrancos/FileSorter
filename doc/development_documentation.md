@@ -82,6 +82,8 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 ### 24/11/22
 
 - Created Automated testing on github using actions
+- Expand logging tests
+- Rename main
 
 #### Immediate Goals - 24/11/22
 
@@ -96,7 +98,8 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
     - Provides Isolation
     - Can run automatic tests
     - More easily reversible
+  - *Oki, Ill do it*
 
 #### Useful info - 24/11/22
 
-- [*What is the info about*](*https://...)
+- [Style Guid](https://peps.python.org/pep-0008/)
