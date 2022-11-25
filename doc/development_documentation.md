@@ -101,3 +101,23 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 #### Useful info - 24/11/22
 
 - [Style Guid](https://peps.python.org/pep-0008/)
+
+### 25/11/22
+
+- Started CommandLine Argument Parsing Tests
+- Protected Main Branch
+- Added some usage stuff to the README
+
+#### Immediate Goals - 25/11/22
+
+- [ ] Investigate more about branch protection
+- [ ] Make a script that takes this "TODO"s and writes them to an isolated file, easier to see (backlog)
+
+#### Questions - 25/11/22
+
+- **Insert your questions here**
+  - *Insert Answer here or leave it like this :p*
+
+#### Useful info - 25/11/22
+
+- [*What is the info about*](*https://...)
