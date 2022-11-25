@@ -2,7 +2,6 @@ from parameterized import parameterized
 import unittest
 
 from common.decorators import positional_arguments_validation
-from common.logger import Logger
 
 
 FAILURE = "failure"

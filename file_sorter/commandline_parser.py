@@ -1,7 +1,7 @@
 from typing import Tuple, List
 
-from file_sorter.common.logger import Logger
-from file_sorter.common.decorators import positional_arguments_validation
+from common.logger import Logger
+from common.decorators import positional_arguments_validation
 
 
 def argument_error_handling(values_received):
@@ -31,8 +31,8 @@ class InputParsed:
 
 
 def parse_command_line_arguments(
-        argv: Tuple(str),
-        arguments: Tuple(InputConfiguration)):
+        argv: tuple(),
+        arguments: tuple()):
     Logger.info("Parsing Command Line Arguments")
     parser_arguments: List[InputParsed] = list()
     for argument in arguments:
@@ -42,15 +42,17 @@ def parse_command_line_arguments(
                 InputParsed(
                     argument.name,
                     argument.retriever(
-                        get_elem_or_empty(index))))
+                        get_elem_or_empty(index + 1))))
             Logger.info(f'{argument.name} argument parsed')
 
 
-def get_elem_or_empty(tpl: Tuple(str), index: int) -> str:
-    return tpl[index + 1] if index + 1 <= len(tpl) - 1 else ""
+def get_elem_or_empty(tpl: tuple(), index: int) -> str:
+    if index <= len(tpl) - 1 and index >= 0:
+        return tpl[index]
+    return ""
 
 
-def get_index(target: InputConfiguration, arguments: Tuple(str)):
+def get_index(target: InputConfiguration, arguments: tuple()):
     try:
         return arguments.index(target.shortForm)
     except ValueError:
