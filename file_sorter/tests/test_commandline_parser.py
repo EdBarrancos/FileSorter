@@ -28,7 +28,31 @@ class TestGetElemOrEmpty(unittest.TestCase):
 
 
 class TestGetIndex(unittest.TestCase):
-    pass
+    target = InputConfiguration("test", "-t", "--test")
+
+    @parameterized.expand([
+        [("-t", "-r"), 0],
+        [("-t",), 0],
+        [("-r", "-t"), 1],
+        [(), -1],
+        [("-r",), -1]
+    ])
+    def test_shortForm(self, under_test, pretended):
+        self.assertEqual(
+            get_index(TestGetIndex.target, under_test),
+            pretended)
+
+    @parameterized.expand([
+        [("--test", "-r"), 0],
+        [("--test",), 0],
+        [("-r", "--test"), 1],
+        [(), -1],
+        [("-r",), -1]
+    ])
+    def test_longForm(self, under_test, pretended):
+        self.assertEqual(
+            get_index(TestGetIndex.target, under_test),
+            pretended)
 
 
 class TestParseCommandLineArguments(unittest.TestCase):

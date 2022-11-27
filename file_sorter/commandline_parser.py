@@ -58,7 +58,8 @@ def get_index(target: InputConfiguration, arguments: tuple()):
     except ValueError:
         if target.longForm != "":
             try:
-                return arguments.index(target.shortForm)
+                print(arguments.index(target.longForm))
+                return arguments.index(target.longForm)
             except ValueError:
                 return -1
         return -1
