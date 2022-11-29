@@ -1,7 +1,7 @@
 from parameterized import parameterized
 import unittest
 
-from common.decorators import positional_arguments_validation
+from common.decorators import positional_arguments_notNullorEmpty
 
 
 FAILURE = "failure"
@@ -12,11 +12,11 @@ class TestPositionalArgumentValidation(unittest.TestCase):
     def error_handling(*args):
         return FAILURE
 
-    @positional_arguments_validation(error_handling)
+    @positional_arguments_notNullorEmpty(error_handling)
     def under_test_one_argument(arg):
         return arg
 
-    @positional_arguments_validation(error_handling)
+    @positional_arguments_notNullorEmpty(error_handling)
     def under_test_two_arguments(arg1, arg2):
         return (arg1, arg2)
 
