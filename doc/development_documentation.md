@@ -26,7 +26,7 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 #### Immediate Goals
 
 - [x] Create a argument parser (Console Arguments)
-- [ ] Create a test for this
+- [x] Create a test for this
 - [x] Use and read about Logging
 - [x] Make a scrpit to create this dev logs
 
@@ -80,12 +80,12 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 - New Makefile rule to clean pychache related stuff
 - Decorator tests
 
-#### Immediate Goals - 24/11/22
+#### Immediate Goals - 24/11/22 - NOT_COMPLETED
 
 - [ ] Checkout what else can I do with github actions
 - [ ] New entry script scan for non filled sections from the last log and delete them
 - [ ] From time to time review the code and if im abidying by the functional programming paradigm
-- [ ] Command line parsing tests
+- [x] Command line parsing tests
 
 #### Questions - 24/11/22
 
@@ -108,7 +108,7 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 - Protected Main Branch
 - Added some usage stuff to the README
 
-#### Immediate Goals - 25/11/22
+#### Immediate Goals - 25/11/22 - NOT_COMPLETED
 
 - [ ] Investigate more about branch protection
 - [ ] Make a script that takes this "TODO"s and writes them to an isolated file, easier to see (backlog)
@@ -119,14 +119,14 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 - parse arguments recursive
 - Finish Tests to Parsing Arguments
 
-#### Immediate Goals - 29/11/22
+#### Immediate Goals - 29/11/22 - NOT_COMPLETED
 
 - [ ] Test for new decorator function
 - [ ] New Entry check first if there is already an entry with that date
 - [ ] I feel like the \_\_eq\_\_ is not very functional programmy. Try to find a elegant solution which is still functional programmy
 - [x] Make Parse Command Line Arguments recursive
-- [ ] Command or tool to find TODOs through the code
 - [ ] Add title to parameterized tests
+- [ ] Script to go through the goals and create an organized document
 
 #### Questions - 29/11/22
 
