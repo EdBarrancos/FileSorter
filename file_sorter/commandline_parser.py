@@ -1,16 +1,19 @@
 from typing import Tuple, List
+from inspect import signature
 
 from common.logger import Logger
-from common.decorators import positional_arguments_validation
+from common.decorators import positional_arguments_notNullorEmpty, \
+    positional_arguments_notNull
 
 
-def argument_error_handling(values_received):
+def argument_error_handling(function, values_received):
     Logger.critical("Expected non empty arguments,"
+                    + f'in {function.__name__}{signature(function)} '
                     + f'instead got {values_received}')
 
 
 class InputConfiguration:
-    @positional_arguments_validation(argument_error_handling)
+    @positional_arguments_notNullorEmpty(argument_error_handling)
     def __init__(
             self,
             name: str,
@@ -24,26 +27,45 @@ class InputConfiguration:
 
 
 class InputParsed:
-    @positional_arguments_validation(argument_error_handling)
+    @positional_arguments_notNull(argument_error_handling)
     def __init__(self, name: str, value):
         self.name = name
         self.value = value
+
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, InputParsed):
+            return self.name == other.name and self.value == other.value
+        return False
 
 
 def parse_command_line_arguments(
         argv: tuple(),
         arguments: tuple()):
     Logger.info("Parsing Command Line Arguments")
-    parser_arguments: List[InputParsed] = list()
-    for argument in arguments:
-        index = get_index(argument, argv)
+
+    def _parse_command_line_arguments(argv, rest_arguments):
+        if len(rest_arguments) == 0:
+            return tuple()
+
+        index = get_index(rest_arguments[0], argv)
         if index != -1:
-            parser_arguments.append(
-                InputParsed(
-                    argument.name,
-                    argument.retriever(
-                        get_elem_or_empty(index + 1))))
-            Logger.info(f'{argument.name} argument parsed')
+            parsed_arg = InputParsed(
+                            rest_arguments[0].name,
+                            rest_arguments[0].retriever(
+                                get_elem_or_empty(argv, index + 1)))
+
+            Logger.debug(f'{rest_arguments[0].name} argument parsed')
+
+            return (parsed_arg,) \
+                + _parse_command_line_arguments(
+                    argv,
+                    rest_arguments[1: len(rest_arguments)])
+
+        return _parse_command_line_arguments(
+            argv,
+            rest_arguments[1: len(rest_arguments)])
+
+    return _parse_command_line_arguments(argv, arguments)
 
 
 def get_elem_or_empty(tpl: tuple(), index: int) -> str:
@@ -58,7 +80,6 @@ def get_index(target: InputConfiguration, arguments: tuple()):
     except ValueError:
         if target.longForm != "":
             try:
-                print(arguments.index(target.longForm))
                 return arguments.index(target.longForm)
             except ValueError:
                 return -1
