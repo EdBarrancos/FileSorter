@@ -37,12 +37,13 @@ class InputParsed:
             return self.name == other.name and self.value == other.value
         return False
 
+    def __ne__(self, other: object) -> bool:
+        return not self.__eq__(other)
+
 
 def parse_command_line_arguments(
         argv: tuple(),
         arguments: tuple()):
-    Logger.info("Parsing Command Line Arguments")
-
     def _parse_command_line_arguments(argv, rest_arguments):
         if len(rest_arguments) == 0:
             return tuple()
@@ -65,7 +66,8 @@ def parse_command_line_arguments(
             argv,
             rest_arguments[1: len(rest_arguments)])
 
-    return _parse_command_line_arguments(argv, arguments)
+    Logger.info("Parsing Command Line Arguments")
+    return _parse_command_line_arguments(argv.split(" "), arguments)
 
 
 def get_elem_or_empty(tpl: tuple(), index: int) -> str:

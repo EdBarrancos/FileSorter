@@ -56,4 +56,39 @@ class TestGetIndex(unittest.TestCase):
 
 
 class TestParseCommandLineArguments(unittest.TestCase):
-    pass
+    def test_parse_basic(self):
+        argv = "-t"
+        arguments = (InputConfiguration("test", "-t"),)
+        parsed_arguments = (InputParsed("test", ""),)
+        under_test = parse_command_line_arguments(argv, arguments)
+        self.assertEqual(under_test, parsed_arguments)
+
+    @parameterized.expand([
+        [
+            "-t -r",
+            (InputConfiguration("test", "-t"),),
+            (InputParsed("test", ""),)
+        ],
+        [
+            "-r",
+            (InputConfiguration("test", "-t"),),
+            tuple()
+        ],
+        [
+            "-t 12",
+            (InputConfiguration("test", "-t", retriver=lambda x: x),),
+            (InputParsed("test", "12"),)
+        ],
+        [
+            "--test 12",
+            (InputConfiguration(
+                "test",
+                "-t",
+                longForm="--test",
+                retriver=lambda x: x),),
+            (InputParsed("test", "12"),)
+        ]
+    ])
+    def test_parse(self, argv, arguments, expected_parse_arguments):
+        under_test = parse_command_line_arguments(argv, arguments)
+        self.assertEqual(under_test, expected_parse_arguments)

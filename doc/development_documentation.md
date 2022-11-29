@@ -113,11 +113,26 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 - [ ] Investigate more about branch protection
 - [ ] Make a script that takes this "TODO"s and writes them to an isolated file, easier to see (backlog)
 
-#### Questions - 25/11/22
+### 29/11/22
+
+- Decorator to test arguments for None only
+- parse arguments recursive
+- Finish Tests to Parsing Arguments
+
+#### Immediate Goals - 29/11/22
+
+- [ ] Test for new decorator function
+- [ ] New Entry check first if there is already an entry with that date
+- [ ] I feel like the \_\_eq\_\_ is not very functional programmy. Try to find a elegant solution which is still functional programmy
+- [x] Make Parse Command Line Arguments recursive
+- [ ] Command or tool to find TODOs through the code
+- [ ] Add title to parameterized tests
+
+#### Questions - 29/11/22
 
 - **Insert your questions here**
   - *Insert Answer here or leave it like this :p*
 
-#### Useful info - 25/11/22
+#### Useful info - 29/11/22
 
 - [*What is the info about*](*https://...)
