@@ -128,11 +128,19 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 - [ ] Add title to parameterized tests
 - [ ] Script to go through the goals and create an organized document
 
-#### Questions - 29/11/22
+### 30/11/22
+
+- Added title to tests
+
+#### Immediate Goals - 30/11/22
+
+- [ ] *Insert future goals/problems to solve here*
+
+#### Questions - 30/11/22 - NOT_COMPLETED
 
 - **Insert your questions here**
   - *Insert Answer here or leave it like this :p*
 
-#### Useful info - 29/11/22
+#### Useful info - 30/11/22
 
 - [*What is the info about*](*https://...)

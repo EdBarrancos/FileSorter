@@ -20,12 +20,11 @@ class TestLogger(unittest.TestCase):
         self.assertEqual(logging_level, pretended_level)
 
     @parameterized.expand([
-        ["NONE"],
-        [""],
-        ["WTV"],
-        [1],
-        [None]
+        ["Random word", "NONE"],
+        ["Empty String", ""],
+        ["Number", 1],
+        ["None", None]
     ])
-    def test_string_logging_level_nonexistant(self, string_to_eval):
+    def test_string_logging_level_nonexistant(self, _title, string_to_eval):
         logging_level = Logger.string_to_logging_level(string_to_eval)
         self.assertEqual(logging_level, logging.NOTSET)

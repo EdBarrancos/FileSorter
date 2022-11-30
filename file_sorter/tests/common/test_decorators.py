@@ -32,24 +32,24 @@ class TestPositionalArgumentValidation(unittest.TestCase):
         self.assertEqual(response, (SUCCESS, SUCCESS))
 
     @parameterized.expand([
-        [""],
-        [None]
+        ["Empty String", ""],
+        ["None", None]
     ])
-    def test_failure_one_argument(self, input):
+    def test_failure_one_argument(self, _title, input):
         response = \
             TestPositionalArgumentValidation.under_test_one_argument(input)
         self.assertEqual(response, FAILURE)
 
     @parameterized.expand([
-        [SUCCESS, ""],
-        ["", SUCCESS],
-        ["", ""],
-        [SUCCESS, None],
-        [None, SUCCESS],
-        [None, None],
-        ["", None]
+        ["First argument valid, second empty", SUCCESS, ""],
+        ["First empty, second valid", "", SUCCESS],
+        ["First empty, second empty", "", ""],
+        ["First valid, second none", SUCCESS, None],
+        ["First none, second valid", None, SUCCESS],
+        ["First none, second none", None, None],
+        ["First empty, second none", "", None]
     ])
-    def test_failure_two_arguments(self, arg1, arg2):
+    def test_failure_two_arguments(self, _title, arg1, arg2):
         response = \
             TestPositionalArgumentValidation.under_test_two_arguments(
                 arg1, arg2)
