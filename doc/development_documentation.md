@@ -148,7 +148,7 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 
 #### Immediate Goals - 18/12/22
 
-- [ ] *Insert future goals/problems to solve here*
+- [ ] Script that creates issues on github and updates them
 
 #### Questions - 18/12/22 - NOT_COMPLETED
 
