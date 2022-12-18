@@ -16,4 +16,8 @@ Yours trully, Eduardo Barrancos
 
 ### Run program
 
-`make run`
+`make run DIRECTORY=/path/to/directory/to/be/sorted RULES=/path/to/rules/file`
+
+or
+
+`python3 file_sorter/file_sorter.py -d <DIRECTORY> -r <RULES>`

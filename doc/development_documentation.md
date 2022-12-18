@@ -138,11 +138,13 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 
 #### Immediate Goals - 01/12/22
 
-- [ ] Improve makefile (clean)
+- [x] Improve makefile (clean)
 
 ### 18/12/22
 
 - Use argparser module
+- Improve makefile
+- Finish argument Parsing
 
 #### Immediate Goals - 18/12/22
 
