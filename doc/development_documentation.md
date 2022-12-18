@@ -125,22 +125,34 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 - [ ] New Entry check first if there is already an entry with that date
 - [ ] I feel like the \_\_eq\_\_ is not very functional programmy. Try to find a elegant solution which is still functional programmy
 - [x] Make Parse Command Line Arguments recursive
-- [ ] Add title to parameterized tests
+- [x] Add title to parameterized tests
 - [ ] Script to go through the goals and create an organized document
 
 ### 30/11/22
 
 - Added title to tests
 
-#### Immediate Goals - 30/11/22
+### 01/12/22
+
+- *Insert what you did today here*
+
+#### Immediate Goals - 01/12/22
+
+- [ ] Improve makefile (clean)
+
+### 18/12/22
+
+- Use argparser module
+
+#### Immediate Goals - 18/12/22
 
 - [ ] *Insert future goals/problems to solve here*
 
-#### Questions - 30/11/22 - NOT_COMPLETED
+#### Questions - 18/12/22 - NOT_COMPLETED
 
 - **Insert your questions here**
   - *Insert Answer here or leave it like this :p*
 
-#### Useful info - 30/11/22
+#### Useful info - 18/12/22
 
 - [*What is the info about*](*https://...)
