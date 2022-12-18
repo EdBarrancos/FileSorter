@@ -11,7 +11,7 @@ NEW_ENTRY = """
 
 - [ ] *Insert future goals/problems to solve here*
 
-#### Questions - {date}
+#### Questions - {date} - NOT_COMPLETED
 
 - **Insert your questions here**
   - *Insert Answer here or leave it like this :p*

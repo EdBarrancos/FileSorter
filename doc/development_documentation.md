@@ -25,8 +25,8 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 
 #### Immediate Goals
 
-- [ ] Create a argument parser (Console Arguments)
-- [ ] Create a test for this
+- [x] Create a argument parser (Console Arguments)
+- [x] Create a test for this
 - [x] Use and read about Logging
 - [x] Make a scrpit to create this dev logs
 
@@ -66,15 +66,6 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 - Update Configs so that we store it statically
 - Refactor Logging so that we create the loggers when logging for the first time
 
-#### Immediate Goals - 22/11/22
-
-- [ ] *Insert future goals/problems to solve here*
-
-#### Questions - 22/11/22
-
-- **Insert your questions here**
-  - *Insert Answer here or leave it like this :p*
-
 #### Useful info - 22/11/22
 
 - [More testing](https://realpython.com/python-testing/#executing-your-first-test)
@@ -82,10 +73,19 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 ### 24/11/22
 
 - Created Automated testing on github using actions
+- Expand logging tests
+- Rename main
+- Decorators
+- Command line argument parsing
+- New Makefile rule to clean pychache related stuff
+- Decorator tests
 
-#### Immediate Goals - 24/11/22
+#### Immediate Goals - 24/11/22 - NOT_COMPLETED
 
 - [ ] Checkout what else can I do with github actions
+- [ ] New entry script scan for non filled sections from the last log and delete them
+- [ ] From time to time review the code and if im abidying by the functional programming paradigm
+- [x] Command line parsing tests
 
 #### Questions - 24/11/22
 
@@ -96,7 +96,65 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
     - Provides Isolation
     - Can run automatic tests
     - More easily reversible
+  - *Oki, Ill do it*
 
 #### Useful info - 24/11/22
+
+- [Style Guid](https://peps.python.org/pep-0008/)
+
+### 25/11/22
+
+- Started CommandLine Argument Parsing Tests
+- Protected Main Branch
+- Added some usage stuff to the README
+
+#### Immediate Goals - 25/11/22 - NOT_COMPLETED
+
+- [ ] Investigate more about branch protection
+- [ ] Make a script that takes this "TODO"s and writes them to an isolated file, easier to see (backlog)
+
+### 29/11/22
+
+- Decorator to test arguments for None only
+- parse arguments recursive
+- Finish Tests to Parsing Arguments
+
+#### Immediate Goals - 29/11/22 - NOT_COMPLETED
+
+- [ ] Test for new decorator function
+- [ ] New Entry check first if there is already an entry with that date
+- [ ] I feel like the \_\_eq\_\_ is not very functional programmy. Try to find a elegant solution which is still functional programmy
+- [x] Make Parse Command Line Arguments recursive
+- [x] Add title to parameterized tests
+- [ ] Script to go through the goals and create an organized document
+
+### 30/11/22
+
+- Added title to tests
+
+### 01/12/22
+
+- *Insert what you did today here*
+
+#### Immediate Goals - 01/12/22
+
+- [x] Improve makefile (clean)
+
+### 18/12/22
+
+- Use argparser module
+- Improve makefile
+- Finish argument Parsing
+
+#### Immediate Goals - 18/12/22
+
+- [ ] Script that creates issues on github and updates them
+
+#### Questions - 18/12/22 - NOT_COMPLETED
+
+- **Insert your questions here**
+  - *Insert Answer here or leave it like this :p*
+
+#### Useful info - 18/12/22
 
 - [*What is the info about*](*https://...)
