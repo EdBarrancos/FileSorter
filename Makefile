@@ -17,7 +17,7 @@ test:
 	python3 -m unittest discover -v -s file_sorter/ -t ./file_sorter/
 
 generate_requirements:
-	pip3 freeze > requirements.txt
+	python3 -m pipreqs.pipreqs . --force
 
 clean:
 	rm -rf __pycache__
