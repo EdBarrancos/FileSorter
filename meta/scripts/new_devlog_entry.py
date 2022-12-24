@@ -7,11 +7,11 @@ NEW_ENTRY = """
 
 - *Insert what you did today here*
 
-#### Immediate Goals - {date}
+#### Immediate Goals - {date} - NOT_COMPLETED
 
 - [ ] *Insert future goals/problems to solve here*
 
-#### Questions - {date} - NOT_COMPLETED
+#### Questions - {date}
 
 - **Insert your questions here**
   - *Insert Answer here or leave it like this :p*

@@ -6,9 +6,20 @@ Features:
 
 - Parse a set of rules (Define syntax structure)
 - Rules:
-  - Move Files into a sub-directory
+  - Delete target
   - Find duplicate Files
   - Find deep duplicate Files
+
+### Defining What is a rule
+
+- [Optional] type of search (flat [only in the given dir] or deep [if we go into other directories and if so how deep])
+- *Condition to identify a file/folder
+- *[Optional] condition to exclude file/folder
+- *Action to execute upon the file/folder
+
+#### Example
+
+- file : type(file) and duplicate(simple) : : delete(this)
 
 ## Backlog Features
 

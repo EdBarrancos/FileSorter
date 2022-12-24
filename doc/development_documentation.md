@@ -146,7 +146,7 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 - Improve makefile
 - Finish argument Parsing
 
-#### Immediate Goals - 18/12/22
+#### Immediate Goals - 18/12/22 - NOT COMPLETED
 
 - [ ] Script that creates issues on github and updates them
 
