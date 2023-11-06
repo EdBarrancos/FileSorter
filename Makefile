@@ -8,10 +8,10 @@ DIRECTORY?=
 RULES?=
 
 run:
-	python3 file_sorter/file_sorter.py -d $(DIRECTORY) -r $(RULES)
+	python3 file_sorter/file_sorter_app.py -d $(DIRECTORY) -r $(RULES)
 
 help:
-	python3 file_sorter/file_sorter.py -h
+	python3 file_sorter/file_sorter_app.py -h
 
 test:
 	python3 -m unittest discover -v -s file_sorter/ -t ./file_sorter/

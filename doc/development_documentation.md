@@ -134,8 +134,6 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 
 ### 01/12/22
 
-- *Insert what you did today here*
-
 #### Immediate Goals - 01/12/22
 
 - [x] Improve makefile (clean)
@@ -150,11 +148,12 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 
 - [ ] Script that creates issues on github and updates them
 
-#### Questions - 18/12/22 - NOT_COMPLETED
+### 06/11/23
 
-- **Insert your questions here**
-  - *Insert Answer here or leave it like this :p*
+- Trying to come up with a decent syntax
+  - What the syntax needs? Section to filter out and select files and then a sections of actions
 
-#### Useful info - 18/12/22
-
-- [*What is the info about*](*https://...)
+```
+(name: <REGEX>,
+depth: <int>, ...) ->  DELETE;
+```
