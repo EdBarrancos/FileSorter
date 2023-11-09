@@ -1,9 +1,10 @@
 import os
+import argparse
 
 from common.logger import Logger
-from common.configs import load_configuration
+from common.configs import load_configuration, setup_log_file
+from file_sorter import run_file_sorter
 
-import argparse
 
 
 def directory(path: str):
@@ -17,6 +18,7 @@ if __name__ == "__main__":
     CONFIG_FILE = "settings/settings.json"
 
     load_configuration(CONFIG_FILE)
+    setup_log_file()
 
     Logger.info("File Sorter Initiated")
 
@@ -36,3 +38,5 @@ if __name__ == "__main__":
 
     Logger.info("Command line arguments parsed")
     Logger.debug(f'Parsed: {opt}')
+
+    run_file_sorter(opt.directory, opt.rules)

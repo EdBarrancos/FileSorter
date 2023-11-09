@@ -1,5 +1,5 @@
 import json
-
+from .file_system import UtilsFileSystem
 
 class Configutations:
     configuration = None
@@ -18,3 +18,7 @@ class Configutations:
 
 def load_configuration(configuration_file: str) -> Configutations:
     return Configutations(configuration_file)
+
+def setup_log_file():
+    UtilsFileSystem.create_path_to_file_if_not_exist(
+        Configutations.get_logging_file())
