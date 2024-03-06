@@ -1,10 +1,6 @@
 # File Sorter
 
-## Author
-
-Yours trully, Eduardo Barrancos
-
-## Usage - 06/03/24
+## Usage
 
 ### Make new dev log entry
 
@@ -29,3 +25,7 @@ Then, use the command bellow whenever you want to clean it
 or
 
 `python3 file_sorter/file_sorter.py -d <DIRECTORY> -r <RULES>`
+
+## Author
+
+Yours trully, Eduardo Barrancos
