@@ -1,6 +1,8 @@
 from typing import Tuple
 import os
 from common.functional_programming import reduce_left
+from rules import AbstractRule
+import rules
 
 from file import File, build_file
 
@@ -26,5 +28,9 @@ def build_files_in_directory(root: str, dir_list: list, files_list: list, depth:
         ()
     )
 
-def run_file_sorter(directory_path: str, rules_path: str):
-    print(build_file_list(directory_path, 0))
+def run_file_sorter(directory_path: str, rules_class_name: str):
+    target_files = build_file_list(directory_path, 0)
+    class_ = getattr(rules, rules_class_name)
+    rules_class: AbstractRule = class_()
+    for file in target_files:
+        rules_class.invokate(file)

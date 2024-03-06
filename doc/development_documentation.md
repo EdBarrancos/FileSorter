@@ -84,7 +84,7 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 
 - [ ] Checkout what else can I do with github actions
 - [ ] New entry script scan for non filled sections from the last log and delete them
-- [ ] From time to time review the code and if im abidying by the functional programming paradigm
+- From time to time review the code and if im abidying by the functional programming paradigm
 - [x] Command line parsing tests
 
 #### Questions - 24/11/22
@@ -121,7 +121,7 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 
 #### Immediate Goals - 29/11/22 - NOT_COMPLETED
 
-- [ ] Test for new decorator function
+- [x] Test for new decorator function
 - [ ] New Entry check first if there is already an entry with that date
 - [ ] I feel like the \_\_eq\_\_ is not very functional programmy. Try to find a elegant solution which is still functional programmy
 - [x] Make Parse Command Line Arguments recursive
@@ -157,3 +157,10 @@ I would also like it to be downloadable as a "zsh_package"? Not sure if that is 
 (name: <REGEX>,
 depth: <int>, ...) ->  DELETE;
 ```
+
+### 06/03/24
+
+- Does it make sense to create a sort of DSL? Or should I do something akin to a framework? The user writes a program which sets the rules for filtering and actionables and the file sorter program simply executes it.
+  - How would that work for, for example, different rules for different folders?
+  - I could make a small lib for the rules which would help with the sorting and the actionables
+- How to set this up so it will run on schedule?

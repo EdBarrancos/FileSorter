@@ -24,16 +24,16 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-d', '--directory',
-                        metavar="Full path of directory",
+                        metavar="Full path of target directory",
                         required=True,
                         type=directory,
                         help="Which Directory do you want to filter and sort?"
                         + "[Full file path]")
     parser.add_argument('-r', '--rules',
-                        metavar="Full path of rules file",
+                        metavar="Name of rule class to apply",
                         required=True,
-                        type=argparse.FileType('w'),
-                        help="Path to the rules file")
+                        type=str,
+                        help="Name of rules class to apply")
     opt = parser.parse_args()
 
     Logger.info("Command line arguments parsed")

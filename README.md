@@ -4,7 +4,7 @@
 
 Yours trully, Eduardo Barrancos
 
-## Usage - 25/11/22
+## Usage - 06/03/24
 
 ### Make new dev log entry
 
@@ -14,9 +14,17 @@ Yours trully, Eduardo Barrancos
 
 `make test`
 
-### Run program
+### Use the program
 
-`make run DIRECTORY=/path/to/directory/to/be/sorted RULES=/path/to/rules/file`
+#### Create Rules
+
+Go to the file [rules](rules.py) and create a class with the filtering and rules you want for your folder
+
+Then, use the command bellow whenever you want to clean it
+
+#### Run program
+
+`make run DIRECTORY=/path/to/directory/to/be/sorted RULES=name_of_class_with_rules`
 
 or
 
