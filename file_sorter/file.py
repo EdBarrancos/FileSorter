@@ -9,7 +9,7 @@ class File:
             depth: int,
             file_type: str):
         self.name = name
-        self.path = path
+        self.full_path = path
         self.depth = depth
         self.file_type = file_type
     
@@ -18,29 +18,24 @@ class File:
     
     def __repr__(self) -> str:
         return self.__str__()
+
+    def full_name(self) -> str:
+        return self.name + '.' + self.file_type
     
     def is_duplicate(self) -> bool:
         if len(self.name) < 3:
             return False
         return re.search("\([1-9]+[0-9]*\)$", self.name) is not None
+    
+    def delete(self) -> None:
+        os.remove(self.full_path)
 
     def build_file(
             root: str,
             name : str,
             depth: str):
         return File(
-            name, 
+            name.split('.')[0], 
             os.path.join(root, name), 
             depth,
             name.split('.')[-1])
-
-class FileAction:
-    def __init__(self, target_file: File) -> None:
-        self.target_file = target_file
-    
-    def execute() -> None:
-        pass
-
-class FileActionQueue:
-    def __init__(self) -> None:
-        self.queue = []

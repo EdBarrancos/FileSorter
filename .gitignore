@@ -54,3 +54,4 @@ cover/
 # Project specific
 settings.json
 logs/*
+testing/*

@@ -4,7 +4,8 @@ from common.functional_programming import reduce_left
 from rules import AbstractRule
 import rules
 
-from file import File, FileActionQueue
+from file import File
+from file_actions import FileActionQueue
 
 def build_file_list(directory_path: str, depth: int) -> Tuple[File]:
     files = ()
@@ -38,3 +39,5 @@ def run_file_sorter(directory_path: str, rules_class_name: str) -> None:
 
     for file in target_files:
         rules_class.invokate(file, queue)
+    
+    queue.execute_actions()
