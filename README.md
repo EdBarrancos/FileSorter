@@ -26,6 +26,25 @@ or
 
 `python3 file_sorter/file_sorter.py -d <DIRECTORY> -r <RULES>`
 
+### Setup run command
+
+#### Zsh
+
+Add to `.zshrc`
+
+```bash
+export PATH_TO_FILE_SORTER=/home/user/path/to/file-sorter
+run_file_sorter() {
+    cwd=$(pwd)
+    cd $PATH_TO_FILE_SORTER
+    make run DIRECTORY=/home/user/to/be/sorted/dir RULES=TargetRule
+    cd $cwd
+}
+run_file_sorter 1> /dev/null
+```
+
+Then you can also, through the use of the command `run_file_sorter` invoke the file_sorter
+
 ## Author
 
 Yours trully, Eduardo Barrancos
