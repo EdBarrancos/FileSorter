@@ -12,6 +12,8 @@ class File:
         self.full_path = path
         self.depth = depth
         self.file_type = file_type
+
+        self.exists = True
     
     def __str__(self) -> str:
         return f"{self.name} - {self.depth}"
@@ -28,6 +30,7 @@ class File:
         return re.search("\([1-9]+[0-9]*\)$", self.name) is not None
     
     def delete(self) -> None:
+        self.exists = False
         os.remove(self.full_path)
 
     def build_file(

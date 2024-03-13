@@ -32,6 +32,7 @@ if __name__ == "__main__":
     parser.add_argument('-r', '--rules',
                         metavar="Name of rule class to apply",
                         required=True,
+                        nargs='+',
                         type=str,
                         help="Name of rules class to apply")
     opt = parser.parse_args()

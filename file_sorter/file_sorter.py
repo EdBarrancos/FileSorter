@@ -1,9 +1,10 @@
 from typing import Tuple
 import os
+
 from common.functional_programming import reduce_left
+from common.logger import Logger
 from rules import AbstractRule
 import rules
-
 from file import File
 from file_actions import FileActionQueue
 
@@ -29,15 +30,19 @@ def build_files_in_directory(root: str, dir_list: list, files_list: list, depth:
         ()
     )
 
-def run_file_sorter(directory_path: str, rules_class_name: str) -> None:
+def run_file_sorter(directory_path: str, rules_class_names: str) -> None:
     target_files = build_file_list(directory_path, 0)
 
-    class_ = getattr(rules, rules_class_name)
-    rules_class: AbstractRule = class_()
+    rules_classes = []
+    for rules_class_name in rules_class_names:
+        class_ = getattr(rules, rules_class_name)
+        rules_class: AbstractRule = class_()
+        rules_classes.append(rules_class)
 
     queue = FileActionQueue()
-
     for file in target_files:
-        rules_class.invokate(file, queue)
-    
+        for rule in rules_classes:
+            rule.invokate(file, queue)
+
     queue.execute_actions()
+    Logger.info(f'Finished Sorting {directory_path}')
