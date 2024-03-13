@@ -38,7 +38,7 @@ class File:
             name : str,
             depth: str):
         return File(
-            name.split('.')[0], 
+            ".".join(name.split('.')[0:-1]), 
             os.path.join(root, name), 
             depth,
             name.split('.')[-1])

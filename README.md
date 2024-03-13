@@ -24,7 +24,7 @@ Then, use the command bellow whenever you want to clean it
 
 or
 
-`python3 file_sorter/file_sorter.py -d <DIRECTORY> -r <RULES>`
+`python3 file_sorter/file_sorter_app.py -d <DIRECTORY> -r <RULES>`
 
 ### Setup run command
 
