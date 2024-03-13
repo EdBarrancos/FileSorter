@@ -37,7 +37,7 @@ export PATH_TO_FILE_SORTER=/home/user/path/to/file-sorter
 run_file_sorter() {
     cwd=$(pwd)
     cd $PATH_TO_FILE_SORTER
-    make run DIRECTORY=/home/user/to/be/sorted/dir RULES=TargetRule
+    python3 file_sorter/file_sorter_app.py -d /home/user/path/to/dir  -r DeleteDuplicateRule DeleteDebFileRule
     cd $cwd
 }
 run_file_sorter 1> /dev/null

@@ -1,6 +1,8 @@
 import os
 import re
 
+from common.logger import Logger
+
 class File:
     def __init__(
             self,
@@ -30,8 +32,11 @@ class File:
         return re.search("\([1-9]+[0-9]*\)$", self.name) is not None
     
     def delete(self) -> None:
-        self.exists = False
-        os.remove(self.full_path)
+        if self.exists:
+            self.exists = False
+            os.remove(self.full_path)
+        else:
+            Logger.warn(f'Deleting already deleted file - {self.name}')
 
     def build_file(
             root: str,
