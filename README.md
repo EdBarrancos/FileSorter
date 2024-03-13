@@ -28,12 +28,14 @@ or
 
 ### Setup run command
 
+Clone the repository
+
 #### Zsh
 
 Add to `.zshrc`
 
 ```bash
-export PATH_TO_FILE_SORTER=/home/user/path/to/file-sorter
+export PATH_TO_FILE_SORTER=/home/user/path/to/file-sorter/repo
 run_file_sorter() {
     cwd=$(pwd)
     cd $PATH_TO_FILE_SORTER
