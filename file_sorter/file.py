@@ -1,6 +1,9 @@
 import os
 import re
 
+from time import time
+from datetime import timedelta
+
 from common.logger import Logger
 
 class File:
@@ -47,3 +50,6 @@ class File:
             os.path.join(root, name), 
             depth,
             name.split('.')[-1])
+    
+def since_modified(file: File) -> timedelta:
+    return timedelta(seconds=time() - os.path.getmtime(file.full_path))
