@@ -1,4 +1,4 @@
-from file import File
+from file import File, since_modified
 from file_actions import FileActionQueue, DeleteFileAction
 
 class AbstractRule:
@@ -20,6 +20,13 @@ class DeleteDebFileRule(AbstractRule):
 class DeleteZipFileRule(AbstractRule):
     def invokate(self, file: File, queue: FileActionQueue) -> None:
         if file.file_type == "zip":
+            queue.queue_action(DeleteFileAction(file))
+            
+class DeleteOlderThanEightMonthsRule(AbstractRule):
+    def invokate(self, file: File, queue: FileActionQueue) -> None:
+        types_to_delete = ["zip", "snap", "mp4", "png"]
+        days_to_delete = 8 * 30
+        if file.file_type in types_to_delete and since_modified(file).days >= days_to_delete:
             queue.queue_action(DeleteFileAction(file))
 
 class PrintName(AbstractRule):
