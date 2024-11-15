@@ -1,0 +1,4 @@
+name = "FileSorter"
+uuid = "d8f8b182-a5bf-4f09-a56b-f519668b70ce"
+authors = ["Eduardo Barrancos <eduardobarrancos11488@gmail.com>"]
+version = "0.1.0"
