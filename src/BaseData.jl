@@ -39,7 +39,6 @@ end
 FileSorterApp() = FileSorterApp([], ActionQueue(), Set{Analyzer}())
 
 hook!(app::FileSorterApp, analyzer::Analyzer) = push!(app.analyzers, analyzer)
-function process(::FileSorterApp, ::Rule, ::Node)
-end
+function process(::FileSorterApp, ::Rule, ::Node) end
 
 end
