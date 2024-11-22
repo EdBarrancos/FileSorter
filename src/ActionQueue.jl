@@ -1,3 +1,5 @@
+module FileSorterActionQueue
+
 export QueueItem, ActionQueue, enqueue, dequeue, execute
 
 abstract type QueueItem end
@@ -13,3 +15,5 @@ enqueue(queue::ActionQueue, items::QueueItem) = push!(queue.items, items)
 dequeue(queue::ActionQueue) = popfirst!(queue.items)
 
 execute(::QueueItem) = error("Not Implemented")
+
+end

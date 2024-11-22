@@ -1,27 +1,21 @@
 module FileSorter
 # julia FileSorter.jl <path-to-folder>, <rule1> <arg1> <arg2>, <rule2> ...
-using Base: File
 include("InputParsing.jl")
+include("ActionQueue.jl")
+using .FileSorterActionQueue
+include("BaseData.jl")
+using .FileSorterData
+include("FileProcessing.jl")
 
 input = parseInput(ARGS)
 if !isdir(input[begin])
     error("Provided target is not a directory")
 end
 
-abstract type Analyzer end
-abstract type Analyzation end
-Base.hash(a::Analyzer) = hash(typeof(a))
-pre(::Analyzer, ::FileSort) = error("Not Implemented")
-pre(::Analyzer, ::DirSort) = error("Not Implemented")
-pos(::Analyzer, ::FileSort) = error("Not Implemented")
-pos(::Analyzer, ::DirSort) = error("Not Implemented")
+# Check Rules and hook analyzers
 
-struct FileSorterApp
-    analyzers::Set{Analyzer}
-end
+process(FileSorterApp(), input[begin])
 
-FileSorterApp() = FileSorterApp(Set{Analyzer}())
-
-hook!(app::FileSorterApp, analyzer::Analyzer) = push!(app.analyzers, analyzer)
+# Process action queue
 
 end # module FileSorter
