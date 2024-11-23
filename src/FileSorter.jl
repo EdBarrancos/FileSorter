@@ -6,16 +6,17 @@ using .FileSorterActionQueue
 include("BaseData.jl")
 using .FileSorterData
 include("FileProcessing.jl")
+include("CustomRules.jl")
+using .CustomRules: PrintRule
 
 input = parseInput(ARGS)
 if !isdir(input[begin])
     error("Provided target is not a directory")
 end
 
-# Check Rules and hook analyzers
+app = FileSorterApp()
+hook!(app, PrintRule())
+process(app, input[begin])
+foreach(item -> execute(item), app.actionQueue.items)
 
-process(FileSorterApp(), input[begin])
-
-# Process action queue
-
-end # module FileSorter
+end

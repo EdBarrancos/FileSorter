@@ -1,9 +1,10 @@
 module FileSorterData
 
+using Base: println
 using ..FileSorterActionQueue: ActionQueue
 
 export Analyzer, Analyzation, Node, FileSort, DirSort, FileSorterApp
-export pre, pos, fullpath, hook!
+export pre, pos, fullpath, hook!, setup, process
 
 abstract type Analyzer end
 abstract type Analyzation end
@@ -13,6 +14,7 @@ abstract type Rule end
 
 abstract type Node end
 fullpath(node::Node) = node.path * '/' * node.name
+Base.println(node::Node) = println(fullpath(node))
 struct FileSort <: Node
     name::String
     path::String
@@ -37,8 +39,14 @@ struct FileSorterApp
 end
 
 FileSorterApp() = FileSorterApp([], ActionQueue(), Set{Analyzer}())
-
+function setup(::FileSorterApp, ::Rule) end
+function hook!(app::FileSorterApp, rule::Rule)
+    push!(app.rules, rule)
+    setup(app, rule)
+end
 hook!(app::FileSorterApp, analyzer::Analyzer) = push!(app.analyzers, analyzer)
-function process(::FileSorterApp, ::Rule, ::Node) end
+
+function process(::FileSorterApp, ::Rule, ::FileSort) end
+function process(::FileSorterApp, ::Rule, ::DirSort) end
 
 end
