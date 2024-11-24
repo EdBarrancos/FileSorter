@@ -5,43 +5,43 @@ import ..FileSorterActionQueue: enqueue
 
 export dispatch
 
-struct PrintDepthOfFileRule <: Rule end
-PrintDepthOfFileRule(::Any) = PrintDepthOfFileRule()
-setup(app::FileSorterApp, ::PrintDepthOfFileRule) = hook!(app, DepthAnalyzer([0]))
+struct PrintDepthOfFile <: Rule end
+PrintDepthOfFile(::Any) = PrintDepthOfFile()
+setup(app::FileSorterApp, ::PrintDepthOfFile) = hook!(app, DepthAnalyzer([0]))
 
-function process(app::FileSorterApp, ::PrintDepthOfFileRule, file::FileSort)
+function process(app::FileSorterApp, ::PrintDepthOfFile, file::FileSort)
     depthAnalyzation = findanalyzation(DepthAnalyzation, file)
     enqueue(app.actionQueue, PrintQueueItem(file.name, string(depthAnalyzation.depth)))
 end
 
-struct DeleteFileTypeRule <: Rule
-    targetTypes::Tuple{String}
+struct DeleteFilesByType <: Rule
+    targetTypes::Vector{AbstractString}
 end
-setup(app::FileSorterApp, ::DeleteFileTypeRule) = hook!(app, TypeAnalyzer())
+setup(app::FileSorterApp, ::DeleteFilesByType) = hook!(app, TypeAnalyzer())
 
-function process(app::FileSorterApp, rule::DeleteFileTypeRule, file::FileSort)
+function process(app::FileSorterApp, rule::DeleteFilesByType, file::FileSort)
     typeAnalyzation = findanalyzation(TypeAnalyzation, file)
     if typeAnalyzation.type in rule.targetTypes
         enqueue(app.actionQueue, DeleteFile(fullpath(file)))
     end
 end
 
-struct DeleteFilesByTypeModifiedSinceDays <: Rule
-    targetTypes::Tuple{String}
+struct DeleteFilesByTypeCreatedSinceDays <: Rule
+    targetTypes::Vector{AbstractString}
     modifiedSinceDays::Int
 end
-DeleteFilesByTypeModifiedSinceDays(args::Tuple) = DeleteFilesByTypeModifiedSinceDays(args[begin:end-1], parse(Int, args[end]))
-setup(app::FileSorterApp, ::DeleteFilesByTypeModifiedSinceDays) = begin
+DeleteFilesByTypeCreatedSinceDays(args::Vector{AbstractString}) = DeleteFilesByTypeCreatedSinceDays(args[begin:end-1], parse(Int, args[end]))
+setup(app::FileSorterApp, ::DeleteFilesByTypeCreatedSinceDays) = begin
     hook!(app, TypeAnalyzer())
     hook!(app, StatAnalyzer())
 end
-function process(app::FileSorterApp, rule::DeleteFilesByTypeModifiedSinceDays, file::FileSort)
+function process(app::FileSorterApp, rule::DeleteFilesByTypeCreatedSinceDays, file::FileSort)
     typeAnalyzation = findanalyzation(TypeAnalyzation, file)
     if !(typeAnalyzation.type in rule.targetTypes)
         return
     end
     statAnalyzation = findanalyzation(StatAnalyzation, file)
-    timeSinceModification = now() - unix2datetime(statAnalyzation.stats.mtime)
+    timeSinceModification = now() - unix2datetime(statAnalyzation.stats.ctime)
 
     if timeSinceModification <= Dates.Day(rule.modifiedSinceDays)
         return
@@ -53,7 +53,7 @@ end
 
 function dispatch(name, args...)
     return Dict(
-        "PrintDepthOfFileRule" => PrintDepthOfFileRule,
-        "DeleteFileTypeRule" => DeleteFileTypeRule,
-        "DeleteFilesByTypeModifiedSinceDays" => DeleteFilesByTypeModifiedSinceDays)[name](args)
+        "PrintDepthOfFile" => PrintDepthOfFile,
+        "DeleteFilesByType" => DeleteFilesByType,
+        "DeleteFilesByTypeCreatedSinceDays" => DeleteFilesByTypeCreatedSinceDays)[name](convert(Vector{AbstractString},collect(args)))
 end

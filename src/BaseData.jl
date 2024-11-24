@@ -31,7 +31,7 @@ DirSort(name::String, path::String) = DirSort(name, path, [])
 function findanalyzation(analyzationClass::DataType, node::Node)
     analyzations = filter(analyzation -> typeof(analyzation) == analyzationClass, node.analyzations)
     if isempty(analyzations)
-        error("No analyzation of type " * analyzationClass)
+        error("No analyzation of type " * string(analyzationClass) * "in node " * fullpath(node))
     end
 
     if length(analyzations) > 1

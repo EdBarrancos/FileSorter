@@ -21,6 +21,7 @@ end
 
 function analyze(::TypeAnalyzer, file::FileSort)
     if !occursin(".", file.name)
+        push!(file.analyzations, TypeAnalyzation("none"))
         return
     end
 
