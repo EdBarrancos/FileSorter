@@ -16,5 +16,6 @@ function execute(item::DeleteFile)
         println("Trying to delete non-existant file / a directory: " * item.fullpath)
         return
     end
+    println("Deleting " * item.fullpath)
     rm(item.fullpath)
 end
