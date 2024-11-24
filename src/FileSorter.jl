@@ -7,7 +7,7 @@ include("BaseData.jl")
 using .FileSorterData
 include("FileProcessing.jl")
 include("CustomRules.jl")
-using .CustomRules: PrintRule
+using .CustomRules: dispatch
 
 input = parseInput(ARGS)
 if !isdir(input[begin])
@@ -15,8 +15,7 @@ if !isdir(input[begin])
 end
 
 app = FileSorterApp()
-hook!(app, PrintRule())
+hook!(app, dispatch("DeleteFileTypeRule", "out"))
 process(app, input[begin])
 foreach(item -> execute(item), app.actionQueue.items)
-
 end

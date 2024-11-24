@@ -3,8 +3,8 @@ module FileSorterData
 using Base: println
 using ..FileSorterActionQueue: ActionQueue
 
-export Analyzer, Analyzation, Node, FileSort, DirSort, FileSorterApp
-export pre, pos, fullpath, hook!, setup, process
+export Analyzer, Analyzation, Node, FileSort, DirSort, FileSorterApp, Rule
+export pre, pos, fullpath, hook!, setup, process, findanalyzation
 
 abstract type Analyzer end
 abstract type Analyzation end
@@ -28,6 +28,17 @@ struct DirSort <: Node
 end
 DirSort(name::String, path::String) = DirSort(name, path, [])
 
+function findanalyzation(analyzationClass::DataType, node::Node)
+    analyzations = filter(analyzation -> typeof(analyzation) == analyzationClass, node.analyzations)
+    if isempty(analyzations)
+        error("No analyzation of type " * analyzationClass)
+    end
+
+    if length(analyzations) > 1
+        error("More than one analyzation of type " * analyzationClass)
+    end
+    return analyzations[begin]
+end
 
 function pre(::Analyzer, ::Node) end
 function pos(::Analyzer, ::Node) end
