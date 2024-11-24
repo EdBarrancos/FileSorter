@@ -4,7 +4,7 @@ using Base: println
 using ..FileSorterActionQueue: ActionQueue
 
 export Analyzer, Analyzation, Node, FileSort, DirSort, FileSorterApp, Rule
-export pre, pos, fullpath, hook!, setup, process, findanalyzation
+export pre, pos, analyze, fullpath, hook!, setup, process, findanalyzation
 
 abstract type Analyzer end
 abstract type Analyzation end
@@ -40,8 +40,9 @@ function findanalyzation(analyzationClass::DataType, node::Node)
     return analyzations[begin]
 end
 
-function pre(::Analyzer, ::Node) end
-function pos(::Analyzer, ::Node) end
+function pre(::Analyzer, ::DirSort) end
+function pos(::Analyzer, ::DirSort) end
+function analyze(::Analyzer, ::FileSort) end
 
 struct FileSorterApp
     rules::Vector{Rule}
