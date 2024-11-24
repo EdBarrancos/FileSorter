@@ -2,33 +2,30 @@
 
 ## Usage
 
-Create a `setting.json`
-
-### Make new dev log entry
-
-`make new_devlog_entry` -> It will create a new section on the [development_documention](doc/development_documentation.md) with the current date
-
-### Run tests
-
-`make test`
 
 ### Use the program
 
-#### Create Rules
+#### Create new Rules
 
-Go to the file [rules](rules.py) and create a class with the filtering and rules you want for your folder
+Modify the files [CustomAnalyzers](src/customRules/CustomAnalyzers.jl), [CustomQueueItems](src/customRules/CustomQueueItems.jl) and [CustomRules](src/customRules/CustomRules.jl)
 
-Then, use the command bellow whenever you want to clean it
+`Analyzers` are what look to files and directories, retrieve and register information about them. For example, their type, how many files inside a directory, ... For files they run once, for directories they analyze twice, one before and another after we look into the directory's content.
+
+`QueueItems` are actions to perform to files and directories. For example, delete them, move them, rename them. They are processed at the end of everything.
+
+`Rules` group the two above. They register the needed analyzers, then look into the registered info and queue or not items.
 
 #### Run program
 
-`make run DIRECTORY=/path/to/directory/to/be/sorted RULES=name_of_class_with_rules`
+`juliaa /path/to/src/FileSorter.jl /path/to/folder/to/sort <RULES>`
 
-or
+##### Rules Syntax
 
-`python3 file_sorter/file_sorter_app.py -d <DIRECTORY> -r <RULES>`
+`<rule1> <arg1> <arg2>, <rule2> ...`
 
-### Setup run command
+### Setup Example
+
+(I've been mainly using it to keep my Downloads dir under control)
 
 Clone the repository
 
@@ -36,15 +33,13 @@ Clone the repository
 
 Add to `.zshrc`
 
-```bash
-export PATH_TO_FILE_SORTER=/home/user/path/to/file-sorter/repo
+```zsh
+export PATH_TO_FILE_SORTER=/path/to/FileSorter
+export PATH_TO_FILE_TO_SORT=/path/to/sort
 run_file_sorter() {
-    cwd=$(pwd)
-    cd $PATH_TO_FILE_SORTER
-    python3 file_sorter/file_sorter_app.py -d /home/user/path/to/dir  -r DeleteDuplicateRule DeleteDebFileRule
-    cd $cwd
+    julia $PATH_TO_FILE_SORTER/src/FileSorter.jl $PATH_TO_FILE_TO_SORT DeleteFilesByType deb zip, DeleteFilesByTypeCreatedSinceDays snap mp4 png jpg webp gz jpeg 240, DeleteFilesByTypeCreatedSinceDays pdf 365
 }
-run_file_sorter 1> /dev/null
+run_file_sorter
 ```
 
 Then you can also, through the use of the command `run_file_sorter` invoke the file_sorter
