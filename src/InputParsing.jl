@@ -2,18 +2,25 @@ export parseInput
 
 include("utils/UtilsModule.jl")
 
-function parseInput(args::Array)::Tuple{Union{String, Vector{String}}}
+function parseInput(args::Array)::Union{Tuple{String,Vector{Vector{AbstractString}}},Tuple{String}}
     if length(ARGS) < 1
         error("Needed path to folder to sort")
     end
 
     argsString = map(x -> string(x), args)
 
-    pathToFolder = argsString[begin] 
+    pathToFolder = argsString[begin]
 
     if length(ARGS) == 1
-        return (pathToFolder, )
+        return (pathToFolder,)
     end
 
-    return (pathToFolder, split(Utils.fold("", argsString[2:end], (a, b) -> a * " " * b), ","))
+    curatedInput = map(a -> filter(x -> !isspace(x), a), argsString[2:end])
+
+    rulesAndArgs = map(
+        ruleInput -> split(ruleInput, " "),
+        split(
+            Utils.reduce(curatedInput, (a, b) -> a * " " * b),
+            ","))
+    return (pathToFolder, map(filter(a -> !isempty(a)), rulesAndArgs))
 end

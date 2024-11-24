@@ -6,7 +6,6 @@ export readdir, process
 Base.readdir(dir::DirSort) = readdir(fullpath(dir))
 
 function evaluate(app::FileSorterApp, file::FileSort)
-    println(file)
     foreach(analyzer -> pre(analyzer, file), app.analyzers)
     foreach(analyzer -> pos(analyzer, file), app.analyzers)
     foreach(rule -> process(app, rule, file), app.rules)
