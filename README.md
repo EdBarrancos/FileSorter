@@ -25,13 +25,15 @@ Modify the files [CustomAnalyzers](src/customRules/CustomAnalyzers.jl), [CustomQ
 
 ### Setup Example
 
+(I've been mainly using it to keep my Downloads dir under control)
+
 Clone the repository
 
 #### Zsh
 
 Add to `.zshrc`
 
-```bash
+```zsh
 export PATH_TO_FILE_SORTER=/path/to/FileSorter
 export PATH_TO_FILE_TO_SORT=/path/to/sort
 run_file_sorter() {
