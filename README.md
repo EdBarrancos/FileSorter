@@ -17,7 +17,7 @@ Modify the files [CustomAnalyzers](src/customRules/CustomAnalyzers.jl), [CustomQ
 
 #### Run program
 
-`juliaa /path/to/src/FileSorter.jl /path/to/folder/to/sort <RULES>`
+`julia /path/to/src/FileSorter.jl /path/to/folder/to/sort <RULES>`
 
 ##### Rules Syntax
 
