@@ -55,3 +55,4 @@ cover/
 settings.json
 logs/*
 testing/*
+tmp/*

@@ -1,6 +1,7 @@
-using Dates
+import Dates
+import JSON3
 
-import ..FileSorterData: Rule, FileSorterApp, FileSort, DirSort, hook!, setup, process, findanalyzation, fullpath
+import ..FileSorterData: Rule, FileSorterApp, FileSort, DirSort, hook!, setup, process, findanalyzation, fullpath, stop
 import ..FileSorterActionQueue: enqueue
 
 export dispatch
@@ -41,7 +42,7 @@ function process(app::FileSorterApp, rule::DeleteFilesByTypeCreatedSinceDays, fi
         return
     end
     statAnalyzation = findanalyzation(StatAnalyzation, file)
-    timeSinceModification = now() - unix2datetime(statAnalyzation.stats.ctime)
+    timeSinceModification = Dates.now() - Dates.unix2datetime(statAnalyzation.stats.ctime)
 
     if timeSinceModification <= Dates.Day(rule.modifiedSinceDays)
         return
@@ -50,10 +51,44 @@ function process(app::FileSorterApp, rule::DeleteFilesByTypeCreatedSinceDays, fi
     enqueue(app.actionQueue, DeleteFile(fullpath(file)))
 end
 
+struct SkipAnalysis <: Rule
+    skipAnlysisSinceMinutes::Int
+    fileRecordKeeper::String
+end
+mutable struct SkipAnalysisRecord
+    lastAnalysis::Dates.DateTime
+end
+SkipAnalysis(args::Vector{AbstractString}) = SkipAnalysis(parse(Int, args[begin]), args[end])
+setup(app::FileSorterApp, rule::SkipAnalysis) = begin
+    filePath = pwd() * "/tmp/" * rule.fileRecordKeeper *
+               (endswith(rule.fileRecordKeeper, ".json") ? "" : ".json")
+    if !isfile(filePath)
+        open(filePath, "w") do io
+            JSON3.write(io, SkipAnalysisRecord(Dates.now()))
+        end
+        return
+    end
+
+    content = JSON3.read(read(filePath, String), SkipAnalysisRecord)
+    sinceLastAnalysis = Dates.now() - Dates.DateTime(content.lastAnalysis)
+    if sinceLastAnalysis < Dates.Minute(rule.skipAnlysisSinceMinutes)
+        println("Skipping Analysis. Last analysis was " *
+                string(Dates.canonicalize(Dates.CompoundPeriod(sinceLastAnalysis))) *
+                " ago")
+        stop(app)
+        return
+    end
+    content.lastAnalysis = Dates.now()
+    open(filePath, "w") do io
+        JSON3.write(io, content)
+    end
+end
+
 
 function dispatch(name, args...)
     return Dict(
         "PrintDepthOfFile" => PrintDepthOfFile,
         "DeleteFilesByType" => DeleteFilesByType,
-        "DeleteFilesByTypeCreatedSinceDays" => DeleteFilesByTypeCreatedSinceDays)[name](convert(Vector{AbstractString},collect(args)))
+        "DeleteFilesByTypeCreatedSinceDays" => DeleteFilesByTypeCreatedSinceDays,
+        "SkipAnalysis" => SkipAnalysis)[name](convert(Vector{AbstractString}, collect(args)))
 end

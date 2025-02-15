@@ -4,7 +4,7 @@ using Base: println
 using ..FileSorterActionQueue: ActionQueue
 
 export Analyzer, Analyzation, Node, FileSort, DirSort, FileSorterApp, Rule
-export pre, pos, analyze, fullpath, hook!, setup, process, findanalyzation
+export pre, pos, analyze, fullpath, hook!, setup, process, findanalyzation, stop
 
 abstract type Analyzer end
 abstract type Analyzation end
@@ -57,6 +57,9 @@ function hook!(app::FileSorterApp, rule::Rule)
     setup(app, rule)
 end
 hook!(app::FileSorterApp, analyzer::Analyzer) = push!(app.analyzers, analyzer)
+function stop(::FileSorterApp)
+    exit()
+end
 
 function process(::FileSorterApp, ::Rule, ::FileSort) end
 function process(::FileSorterApp, ::Rule, ::DirSort) end
