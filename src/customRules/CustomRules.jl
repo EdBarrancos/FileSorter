@@ -61,7 +61,11 @@ end
 SkipAnalysis(args::Vector{AbstractString}) = SkipAnalysis(parse(Int, args[begin]), args[end])
 setup(app::FileSorterApp, rule::SkipAnalysis) = begin
     projectDirectory = dirname(dirname(dirname(@__FILE__)))
-    filePath = projectDirectory * "/tmp/" * rule.fileRecordKeeper *
+    dirPath = projectDirectory * "/tmp/"
+    if !isdir(dirPath)
+        mkdir(dirPath)
+    end
+    filePath = dirPath * rule.fileRecordKeeper *
                (endswith(rule.fileRecordKeeper, ".json") ? "" : ".json")
     if !isfile(filePath)
         open(filePath, "w") do io
