@@ -60,7 +60,8 @@ mutable struct SkipAnalysisRecord
 end
 SkipAnalysis(args::Vector{AbstractString}) = SkipAnalysis(parse(Int, args[begin]), args[end])
 setup(app::FileSorterApp, rule::SkipAnalysis) = begin
-    filePath = pwd() * "/tmp/" * rule.fileRecordKeeper *
+    projectDirectory = dirname(dirname(dirname(@__FILE__)))
+    filePath = projectDirectory * "/tmp/" * rule.fileRecordKeeper *
                (endswith(rule.fileRecordKeeper, ".json") ? "" : ".json")
     if !isfile(filePath)
         open(filePath, "w") do io
