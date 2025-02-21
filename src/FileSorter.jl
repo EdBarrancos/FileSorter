@@ -11,8 +11,12 @@ include("customRules/CustomRulesModule.jl")
 using .CustomRules: dispatch
 
 input = parseInput(ARGS)
+if isnothing(input)
+    exit()
+end
 if !isdir(input[begin])
-    error("Provided target is not a directory")
+    @error "Provided target is not a directory"
+    return
 end
 app = FileSorterApp()
 if length(input) > 1

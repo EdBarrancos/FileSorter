@@ -2,9 +2,10 @@ export parseInput
 
 include("utils/UtilsModule.jl")
 
-function parseInput(args::Array)::Union{Tuple{String,Vector{Vector{AbstractString}}},Tuple{String}}
+function parseInput(args::Array)::Union{Tuple{String,Vector{Vector{AbstractString}}},Tuple{String}, Nothing}
     if length(ARGS) < 1
-        error("Needed path to folder to sort")
+        @error "Needed path to folder to sort"
+        return nothing
     end
 
     argsString = map(x -> string(x), args)
