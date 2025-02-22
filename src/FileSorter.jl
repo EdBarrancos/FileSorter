@@ -10,23 +10,25 @@ include("FileProcessing.jl")
 include("customRules/CustomRulesModule.jl")
 using .CustomRules: dispatch
 
-input = parseInput(ARGS)
-if isnothing(input)
-    exit()
-end
-if !isdir(input[begin])
-    @error "Provided target is not a directory"
-    return
-end
-app = FileSorterApp()
-if length(input) > 1
-    foreach(rule -> length(rule) == 1 ?
-                    hook!(app, dispatch(rule[begin])) :
-                    hook!(app, dispatch(rule[begin], rule[2:end]...)), input[2:end]...)
-end
+function __init__()
+    input = parseInput(ARGS)
+    if isnothing(input)
+        exit()
+    end
+    if !isdir(input[begin])
+        @error "Provided target is not a directory"
+        return
+    end
+    app = FileSorterApp()
+    if length(input) > 1
+        foreach(rule -> length(rule) == 1 ?
+                              hook!(app, dispatch(rule[begin])) :
+                              hook!(app, dispatch(rule[begin], rule[2:end]...)), input[2:end]...)
+    end
 
 
-process(app, input[begin])
-foreach(item -> execute(item), app.actionQueue.items)
+    process(app, input[begin])
+    foreach(item -> execute(item), app.actionQueue.items)
+end
 
 end
