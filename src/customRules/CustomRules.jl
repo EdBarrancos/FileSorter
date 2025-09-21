@@ -1,7 +1,7 @@
 import Dates
 import JSON3
 
-import ..FileSorterData: Rule, FileSorterApp, FileSort, DirSort, hook!, setup, process, findanalyzation, fullpath, stop
+import ..FileSorterData: RuleInput, Rule, FileSorterApp, FileSort, DirSort, hook!, setup, process, findanalyzation, fullpath, stop
 import ..FileSorterActionQueue: enqueue
 
 export dispatch
@@ -90,10 +90,11 @@ setup(app::FileSorterApp, rule::SkipAnalysis) = begin
 end
 
 
-function dispatch(name, args...)
+function dispatch(rule::RuleInput)
     return Dict(
         "PrintDepthOfFile" => PrintDepthOfFile,
         "DeleteFilesByType" => DeleteFilesByType,
         "DeleteFilesByTypeCreatedSinceDays" => DeleteFilesByTypeCreatedSinceDays,
-        "SkipAnalysis" => SkipAnalysis)[name](convert(Vector{AbstractString}, collect(args)))
+        "SkipAnalysis" => SkipAnalysis
+    )[rule.name](convert(Vector{AbstractString}, collect(rule.args)))
 end

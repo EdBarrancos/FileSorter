@@ -1,5 +1,5 @@
 using Base: readdir
-import .FileSorterData: process
+import .FileSorterData: process, DirSort, FileSort, FileSorterApp
 
 export readdir, process
 

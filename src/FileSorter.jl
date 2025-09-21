@@ -10,25 +10,30 @@ include("FileProcessing.jl")
 include("customRules/CustomRulesModule.jl")
 using .CustomRules: dispatch
 
+using JSON3
+
 function __init__()
-    input = parseInput(ARGS)
-    if isnothing(input)
+    input_file = parseInput(ARGS)
+    if isnothing(input_file)
         exit()
     end
-    if !isdir(input[begin])
+
+    input::FileSorterInput = JSON3.read(read(input_file, String), FileSorterInput)
+    if !isdir(input.target)
         @error "Provided target is not a directory"
         return
     end
     app = FileSorterApp()
-    if length(input) > 1
-        foreach(rule -> length(rule) == 1 ?
-                              hook!(app, dispatch(rule[begin])) :
-                              hook!(app, dispatch(rule[begin], rule[2:end]...)), input[2:end]...)
+    if length(input.rules) > 1
+        create_rules(app, input.rules)
     end
 
-
-    process(app, input[begin])
+    process(app, input.target)
     foreach(item -> execute(item), app.actionQueue.items)
+end
+
+function create_rules(app::FileSorterApp, rules_input::Vector{RuleInput})
+    foreach(rule -> hook!(app, dispatch(rule)), rules_input)
 end
 
 end

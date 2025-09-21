@@ -1,10 +1,23 @@
 module FileSorterData
 
 using Base: println
+using StructTypes
 using ..FileSorterActionQueue: ActionQueue
 
+export FileSorterInput, RuleInput
 export Analyzer, Analyzation, Node, FileSort, DirSort, FileSorterApp, Rule
 export pre, pos, analyze, fullpath, hook!, setup, process, findanalyzation, stop
+
+struct RuleInput
+    name::String
+    args::Vector{String}
+end
+
+struct FileSorterInput
+    target::String
+    rules::Vector{RuleInput}
+end
+StructTypes.StructType(::Type{FileSorterInput}) = StructTypes.Struct()
 
 abstract type Analyzer end
 abstract type Analyzation end
