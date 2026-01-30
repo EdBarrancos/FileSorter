@@ -89,8 +89,10 @@ setup(app::FileSorterApp, rule::SkipAnalysis) = begin
     end
 end
 
+precompile(setup, (FileSorterApp, SkipAnalysis,))
 
-function dispatch(name::AbstractString, args...)
+
+function dispatch(name::AbstractString, args...)::Rule
     return Dict(
         "PrintDepthOfFile" => PrintDepthOfFile,
         "DeleteFilesByType" => DeleteFilesByType,
