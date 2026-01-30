@@ -8,21 +8,29 @@ function parseInput(args::Array)::Union{Tuple{String,Vector{Vector{AbstractStrin
         return nothing
     end
 
-    argsString = map(x -> string(x), args)
-
-    pathToFolder = argsString[begin]
+    pathToFolder = string(args[begin])
 
     if length(ARGS) == 1
         return (pathToFolder,)
     end
 
-    curatedInput = map(a -> filter(x -> !isspace(x), a), argsString[2:end])
+    rulesAndArgs::Vector{Vector{String}} = []
+    target::Vector{String} = []
+    for arg in args[begin+1:end]
+        if (isspace(arg[begin]))
+            continue
+        end
 
-    rulesAndArgs = map(
-        ruleInput -> split(ruleInput, " "),
-        split(
-            Utils.reduce(curatedInput, (a, b) -> a * " " * b),
-            ","))
+        if arg[end] == ','
+            push!(target, string(arg[begin:end-1]))
+            push!(rulesAndArgs, target)
+            target = []
+            continue
+        end
+
+        push!(target, string(arg))
+    end
+
     return (pathToFolder, map(filter(a -> !isempty(a)), rulesAndArgs))
 end
 

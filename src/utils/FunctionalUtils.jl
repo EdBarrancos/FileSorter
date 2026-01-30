@@ -19,3 +19,4 @@ function reduce(collection::Vector{U}, joiner::Function)::U where {U}
     return folding
 end
 
+precompile(reduce, (Vector{String}, Function,))

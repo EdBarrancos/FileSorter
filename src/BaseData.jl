@@ -64,4 +64,6 @@ end
 function process(::FileSorterApp, ::Rule, ::FileSort) end
 function process(::FileSorterApp, ::Rule, ::DirSort) end
 
+precompile(hook!, (FileSorterApp, Analyzer,))
+
 end
